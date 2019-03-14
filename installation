@@ -7,12 +7,11 @@ npm i react-native-action-button --save
  react-native link react-native-vector-icons
  npm install react-native-simple-card-view
 react-native link react-native-vector-icons
-npm install --save react-native-imagepicker
-react-native link react-native-image-picker
-
-
-
- <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+npm install
+npm install --save react-navigation
+npm install --save react-native-gesture-handler
+react-native link
+npm i react-native-textinput-effects 
+ npm install -g npm
+ npm install --save react-native-imagepicker
+  react-native link react-native-image-picker

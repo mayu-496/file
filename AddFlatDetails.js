@@ -1,0 +1,160 @@
+import React, { Component } from 'react';
+import { Text,
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+
+const options={
+  title: ' Select Image ',
+  takePhotoButtonTitle: 'Camera',
+  chooseFromLibraryButtonTitle: 'Gallery',
+}
+export default class AddBuilding extends Component<{}> {
+    constructor(props){
+    super(props);
+    this.state={
+      avatarSource: null,
+      pic:null
+    }
+  }
+
+  myfun=()=>{
+  
+  ImagePicker.showImagePicker(options, (response) => {
+    console.log('Response = ', response);
+
+    if (response.didCancel) {
+      console.log('User cancelled image picker');
+    }
+    else if (response.error) {
+      console.log('Image Picker Error: ', response.error);
+    }
+
+    else {
+      let source = { uri: response.uri };
+
+      // You can also display the image using data:
+      // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+      this.setState({
+        avatarSource: source,
+        pic:response.data
+      });
+    }
+  });
+}
+ 
+
+	render() {
+   
+		return(
+      <ScrollView>
+			 <View style = {styles.container}>
+
+            
+            <TextInput 
+               
+               placeholder = "Flat No"
+               
+               underlineColorAndroid="black"
+               style={styles.textInput}
+               
+               />
+            
+            <TextInput 
+               
+               placeholder = "Description"
+               
+               underlineColorAndroid="black"
+               style={styles.textInput}
+              
+               />
+
+                 <TextInput 
+               
+               placeholder = "Comment"
+               
+               underlineColorAndroid="black"
+               style={styles.textInput}
+              
+               />
+
+
+              
+
+               <TouchableOpacity style={{backgroundColor:'gray',margin:10,padding:10}}
+        onPress={this.myfun}>
+          <Text style={styles.text}>Select Flat Image</Text>
+        </TouchableOpacity>
+
+               <Image source={this.state.avatarSource}
+          style={{width:300,
+            height:200,
+            margin:10,
+            borderWidth:2,
+            borderColor:'black'}}/>
+
+
+        
+
+              
+            <TouchableOpacity style={styles.button}>
+             <Text style={styles.buttonText}>Add</Text>
+           </TouchableOpacity>
+           
+         </View>
+
+         </ScrollView>
+			);
+	}
+}
+
+const styles = StyleSheet.create({
+  container : {
+    backgroundColor:'#E0F0EC',
+    flex: 1,
+    margin :20,
+  
+    
+  },
+  
+  
+   textInput:{
+    height:40,
+    fontSize : 18,
+    paddingLeft :20,
+    marginVertical: 10,
+   },
+   button: {
+    width:300,
+    backgroundColor:'#02edd5',
+     borderRadius: 25,
+      marginVertical: 10,
+      paddingVertical: 13
+  },
+  buttonText: {
+    fontSize:16,
+    fontWeight:'500',
+    color:'#ffffff',
+    textAlign:'center'
+  },
+   title:{
+    backgroundColor:'#02edd5',
+    fontSize:20,
+    textAlign:'center',
+    padding:18
+  },
+  text:{
+    color:'black',
+    fontSize : 18,
+    
+  }
+});
+
+ 
